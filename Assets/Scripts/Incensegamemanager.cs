@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
@@ -10,17 +10,17 @@ public class IncenseGameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI powerValueText;
     public TextMeshProUGUI systemMessageText;
-    public GameObject popupWindow1; // Õı´_•rï@Ê¾£¨ÓĞ¹´¹´£©
-    public GameObject popupWindow2; // åeÕ`•rï@Ê¾£¨ÓĞ²æ²æ£©
-    public TextMeshProUGUI popupText1; // Õı´_Ò•´°µÄÎÄ×Ö
-    public TextMeshProUGUI popupText2; // åeÕ`Ò•´°µÄÎÄ×Ö
+    public GameObject popupWindow1; // æ­£ç¢ºæ™‚é¡¯ç¤ºï¼ˆæœ‰å‹¾å‹¾ï¼‰
+    public GameObject popupWindow2; // éŒ¯èª¤æ™‚é¡¯ç¤ºï¼ˆæœ‰å‰å‰ï¼‰
+    public TextMeshProUGUI popupText1; // æ­£ç¢ºè¦–çª—çš„æ–‡å­—
+    public TextMeshProUGUI popupText2; // éŒ¯èª¤è¦–çª—çš„æ–‡å­—
     public Image backgroundImage;
 
     [Header("Game Over UI")]
-    public GameObject gamePlayUI; // ß[‘òßMĞĞ•rµÄUI
-    public GameObject gameOverUI; // ß[‘ò½YÊøááµÄUI
-    public GameObject resultIncense; // ½Y¹û®‹ÃæµÄÏã
-    public TextMeshProUGUI angleDisplayText; // ï@Ê¾½Ç¶ÈµÄÎÄ×Ö
+    public GameObject gamePlayUI; // éŠæˆ²é€²è¡Œæ™‚çš„UI
+    public GameObject gameOverUI; // éŠæˆ²çµæŸå¾Œçš„UI
+    public GameObject resultIncense; // çµæœç•«é¢çš„é¦™
+    public TextMeshProUGUI angleDisplayText; // é¡¯ç¤ºè§’åº¦çš„æ–‡å­—
 
     [Header("Game Settings")]
     public float gameTime = 30f;
@@ -30,7 +30,7 @@ public class IncenseGameManager : MonoBehaviour
     public float popupDuration = 1f;
 
     [Header("Result Settings")]
-    public float receivedAngle = 87.5f; // ¼ÙµÄ½ÓÊÕ½Ç¶È£¬Ö®áá•şÄÁíÒ»Ì¨ëŠÄX½ÓÊÕ
+    public float receivedAngle = 87.5f; // å‡çš„æ¥æ”¶è§’åº¦ï¼Œä¹‹å¾Œæœƒå¾å¦ä¸€å°é›»è…¦æ¥æ”¶
 
     [Header("Incense Settings")]
     public GameObject incensePrefab;
@@ -55,15 +55,15 @@ public class IncenseGameManager : MonoBehaviour
         currentPowerValue = initialPowerValue;
         gameActive = true;
 
-        // ï@Ê¾ß[‘òUI£¬ë[²Ø½Y¹ûUI
+        // é¡¯ç¤ºéŠæˆ²UIï¼Œéš±è—çµæœUI
         if (gamePlayUI) gamePlayUI.SetActive(true);
         if (gameOverUI) gameOverUI.SetActive(false);
 
         UpdateUI();
-        // ÒÆ³ıCreateIncenseHolder()£¬²»Éú³ÉÏã t
+        // ç§»é™¤CreateIncenseHolder()ï¼Œä¸ç”Ÿæˆé¦™çˆ
         GenerateIncenseSticks();
 
-        systemMessageText.text = "Ïµ½yÌáÊ¾:ÒÔÉÏé¿Í‘ô²åµÄÏã,ÏãÊÇ·ñÍáĞ±¿ÉÅĞ”à¿Í‘ôµÄĞÄÕı²»Õı,Õˆüc“ôÕÒ³öÕıÖ±µÄÏã";
+        systemMessageText.text = "ç³»çµ±æç¤º:ä»¥ä¸Šç‚ºå®¢æˆ¶æ’çš„é¦™,é¦™æ˜¯å¦æ­ªæ–œå¯åˆ¤æ–·å®¢æˆ¶çš„å¿ƒæ­£ä¸æ­£,è«‹é»æ“Šæ‰¾å‡ºæ­£ç›´çš„é¦™";
     }
 
     void Update()
@@ -83,7 +83,7 @@ public class IncenseGameManager : MonoBehaviour
 
     void GenerateIncenseSticks()
     {
-        // Çå³ı¬FÓĞµÄÏã
+        // æ¸…é™¤ç¾æœ‰çš„é¦™
         foreach (IncenseStick incense in incenseSticks)
         {
             if (incense != null)
@@ -91,7 +91,7 @@ public class IncenseGameManager : MonoBehaviour
         }
         incenseSticks.Clear();
 
-        // „“½¨ÏãµÄÎ»ÖÃ£¨ˆAĞÎÅÅÁĞÔÚÏã tÉÏ£©
+        // å‰µå»ºé¦™çš„ä½ç½®ï¼ˆåœ“å½¢æ’åˆ—åœ¨é¦™çˆä¸Šï¼‰
         List<Vector2> positions = GenerateIncensePositions();
         List<float> angles = GenerateIncenseAngles();
 
@@ -113,19 +113,19 @@ public class IncenseGameManager : MonoBehaviour
     List<Vector2> GenerateIncensePositions()
     {
         List<Vector2> positions = new List<Vector2>();
-        Vector2 centerPos = holderPosition + Vector2.up * 180f; // Õ{Õû»ùœÊÎ»ÖÃ
+        Vector2 centerPos = holderPosition + Vector2.up * 180f; // èª¿æ•´åŸºæº–ä½ç½®
 
-        // Ê¹ÓÃ¸üŒ’µÄË®Æ½·Ö²¼£¬ßm‘ªİ^´óµÄÏã
-        float baseWidth = 200f; // Ôö¼Ó·Ö²¼Œ’¶È
-        float baseHeight = 50f;  // Ôö¼Ó¸ß¶È×ƒ»¯
+        // ä½¿ç”¨æ›´å¯¬çš„æ°´å¹³åˆ†å¸ƒï¼Œé©æ‡‰è¼ƒå¤§çš„é¦™
+        float baseWidth = 200f; // å¢åŠ åˆ†å¸ƒå¯¬åº¦
+        float baseHeight = 50f;  // å¢åŠ é«˜åº¦è®ŠåŒ–
 
         for (int i = 0; i < totalIncenseCount; i++)
         {
-            // Ë®Æ½Î»ÖÃ£º¾ù„ò·Ö²¼£¬ÔÙ¼ÓÉÏëS™CÆ«ÒÆ
+            // æ°´å¹³ä½ç½®ï¼šå‡å‹»åˆ†å¸ƒï¼Œå†åŠ ä¸Šéš¨æ©Ÿåç§»
             float baseX = (i - (totalIncenseCount - 1) * 0.5f) * (baseWidth * 2 / totalIncenseCount);
             float xPos = baseX + Random.Range(-40f, 40f);
 
-            // ´¹Ö±Î»ÖÃ£ºÉÔÎ¢×ƒ»¯£¬Ä£”M²åÈëÉî¶È²»Í¬
+            // å‚ç›´ä½ç½®ï¼šç¨å¾®è®ŠåŒ–ï¼Œæ¨¡æ“¬æ’å…¥æ·±åº¦ä¸åŒ
             float yPos = Random.Range(-baseHeight / 2, baseHeight / 2);
 
             Vector2 pos = centerPos + new Vector2(xPos, yPos);
@@ -139,13 +139,13 @@ public class IncenseGameManager : MonoBehaviour
     {
         List<float> angles = new List<float>();
 
-        // Ìí¼ÓÕı´_µÄÏã£¨90¶È£©
+        // æ·»åŠ æ­£ç¢ºçš„é¦™ï¼ˆ90åº¦ï¼‰
         for (int i = 0; i < correctIncenseCount; i++)
         {
             angles.Add(90f);
         }
 
-        // Ìí¼ÓåeÕ`µÄÏã£¨½Ó½ü90¶Èµ«²»ÍêÈ«Õı´_£©
+        // æ·»åŠ éŒ¯èª¤çš„é¦™ï¼ˆæ¥è¿‘90åº¦ä½†ä¸å®Œå…¨æ­£ç¢ºï¼‰
         for (int i = correctIncenseCount; i < totalIncenseCount; i++)
         {
             float angle;
@@ -153,9 +153,9 @@ public class IncenseGameManager : MonoBehaviour
 
             if (randomType < 0.4f)
             {
-                // 40% ÉÔÎ¢ƒAĞ± (85-95¶ÈÖ®ég)
+                // 40% ç¨å¾®å‚¾æ–œ (85-95åº¦ä¹‹é–“)
                 angle = Random.Range(80f, 105f);
-                // ±Üé_90¶È¸½½ü
+                // é¿é–‹90åº¦é™„è¿‘
                 while (Mathf.Abs(angle - 90f) < 2f)
                 {
                     angle = Random.Range(80f, 105f);
@@ -163,9 +163,9 @@ public class IncenseGameManager : MonoBehaviour
             }
             else if (randomType < 0.7f)
             {
-                // 30% ½Ó½ü90¶ÈµÄåeÕ`´ğ°¸ (89-91¶ÈÖ®ég£¬µ«²»ÊÇ90¶È)
+                // 30% æ¥è¿‘90åº¦çš„éŒ¯èª¤ç­”æ¡ˆ (89-91åº¦ä¹‹é–“ï¼Œä½†ä¸æ˜¯90åº¦)
                 angle = Random.Range(87.5f, 92.5f);
-                // ´_±£²»ÊÇ„‚ºÃ90¶È
+                // ç¢ºä¿ä¸æ˜¯å‰›å¥½90åº¦
                 while (Mathf.Abs(angle - 90f) < 2f)
                 {
                     angle = Random.Range(87.5f, 92.5f);
@@ -173,9 +173,9 @@ public class IncenseGameManager : MonoBehaviour
             }
             else
             {
-                // 30% Ã÷ï@ƒAĞ± (75-105¶ÈÖ®ég)
+                // 30% æ˜é¡¯å‚¾æ–œ (75-105åº¦ä¹‹é–“)
                 angle = Random.Range(65f, 125f);
-                // ±Üé_90¶È¸½½ü
+                // é¿é–‹90åº¦é™„è¿‘
                 while (Mathf.Abs(angle - 90f) < 5f)
                 {
                     angle = Random.Range(65f, 125f);
@@ -185,7 +185,7 @@ public class IncenseGameManager : MonoBehaviour
             angles.Add(angle);
         }
 
-        // ´òyí˜Ğò
+        // æ‰“äº‚é †åº
         for (int i = 0; i < angles.Count; i++)
         {
             float temp = angles[i];
@@ -203,17 +203,17 @@ public class IncenseGameManager : MonoBehaviour
 
         if (Mathf.Approximately(angle, 90f))
         {
-            // Õı´_µÄÏã
+            // æ­£ç¢ºçš„é¦™
             currentPowerValue += correctIncenseReward;
-            ShowPopup("90.0¶È,ºÜÕıÖ±!", true);
-            systemMessageText.text = "Ïµ½yÌáÊ¾:´ËÏã90¶È,ÅĞ”àÕı´_,Ôö¼ÓÉñÁ¦Öµ,¿ÉÀ^ÀmŒ¤ÕÒÕıÖ±µÄÏã";
+            ShowPopup("90.0åº¦,å¾ˆæ­£ç›´!", true);
+            systemMessageText.text = "ç³»çµ±æç¤º:æ­¤é¦™90åº¦,åˆ¤æ–·æ­£ç¢º,å¢åŠ ç¥åŠ›å€¼,å¯ç¹¼çºŒå°‹æ‰¾æ­£ç›´çš„é¦™";
         }
         else
         {
-            // åeÕ`µÄÏã
+            // éŒ¯èª¤çš„é¦™
             currentPowerValue -= wrongIncensePenalty;
-            ShowPopup($"{angle:F1}¶È,²»‰òÕıÖ±", false);
-            systemMessageText.text = "Ïµ½yÌáÊ¾:´ËÏã·Ç90¶È,ÅĞ”àåeÕ`,œpÉÙÉñÁ¦Öµ,ÕˆÕÒ³öÕıÖ±µÄÏã";
+            ShowPopup($"{angle:F1}åº¦,ä¸å¤ æ­£ç›´", false);
+            systemMessageText.text = "ç³»çµ±æç¤º:æ­¤é¦™é90åº¦,åˆ¤æ–·éŒ¯èª¤,æ¸›å°‘ç¥åŠ›å€¼,è«‹æ‰¾å‡ºæ­£ç›´çš„é¦™";
         }
 
         UpdatePowerValue();
@@ -226,7 +226,7 @@ public class IncenseGameManager : MonoBehaviour
 
         if (targetWindow == null || targetText == null) return;
 
-        // ë[²ØÁíÒ»‚€Ò•´°
+        // éš±è—å¦ä¸€å€‹è¦–çª—
         GameObject otherWindow = isCorrect ? popupWindow2 : popupWindow1;
         if (otherWindow != null)
         {
@@ -236,7 +236,7 @@ public class IncenseGameManager : MonoBehaviour
         targetText.text = message;
         targetWindow.SetActive(true);
 
-        // ÖØÔOÍ¸Ã÷¶È
+        // é‡è¨­é€æ˜åº¦
         CanvasGroup canvasGroup = targetWindow.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
@@ -273,7 +273,7 @@ public class IncenseGameManager : MonoBehaviour
     void UpdateTimer()
     {
         int seconds = Mathf.CeilToInt(currentTime);
-        timerText.text = $"µ¹Ó‹•r:{seconds}";
+        timerText.text = $"å€’è¨ˆæ™‚:{seconds}";
     }
 
     void UpdatePowerValue()
@@ -289,23 +289,23 @@ public class IncenseGameManager : MonoBehaviour
 
     void ShowResultScreen()
     {
-        // ë[²Øß[‘òUI£¬ï@Ê¾½Y¹ûUI
+        // éš±è—éŠæˆ²UIï¼Œé¡¯ç¤ºçµæœUI
         if (gamePlayUI) gamePlayUI.SetActive(false);
         if (gameOverUI) gameOverUI.SetActive(true);
 
-        // Çå³ıËùÓĞÏã
+        // æ¸…é™¤æ‰€æœ‰é¦™
         ClearAllIncense();
 
-        // ÔOÖÃ½Y¹ûÏãµÄ½Ç¶ÈºÍï@Ê¾
+        // è¨­ç½®çµæœé¦™çš„è§’åº¦å’Œé¡¯ç¤º
         SetupResultIncense();
 
-        // ¸üĞÂÏµ½yÓÏ¢
-        systemMessageText.text = "Ïµ½yÌáÊ¾£ºß@ÊÇ¿Í‘ôéÄú²åµÄÏãµÄ”µÖµ£¬Õˆ¸ù“ş½Y¹ûÔu¹ÀÕ{Õû¿Í‘ôˆó±í¡£";
+        // æ›´æ–°ç³»çµ±è¨Šæ¯
+        systemMessageText.text = "ç³»çµ±æç¤ºï¼šé€™æ˜¯å®¢æˆ¶ç‚ºæ‚¨æ’çš„é¦™çš„æ•¸å€¼ï¼Œè«‹æ ¹æ“šçµæœè©•ä¼°èª¿æ•´å®¢æˆ¶å ±è¡¨ã€‚";
     }
 
     void ClearAllIncense()
     {
-        // Çå³ıËùÓĞÉú³ÉµÄÏã
+        // æ¸…é™¤æ‰€æœ‰ç”Ÿæˆçš„é¦™
         foreach (IncenseStick incense in incenseSticks)
         {
             if (incense != null)
@@ -320,27 +320,27 @@ public class IncenseGameManager : MonoBehaviour
     {
         if (resultIncense != null)
         {
-            // ÔOÖÃ½Y¹ûÏãµÄ½Ç¶È
+            // è¨­ç½®çµæœé¦™çš„è§’åº¦
             RectTransform incenseRect = resultIncense.GetComponent<RectTransform>();
             if (incenseRect != null)
             {
-                float visualAngle = receivedAngle - 90f; // 90¶È•r´¹Ö±ÏòÉÏ
+                float visualAngle = receivedAngle - 90f; // 90åº¦æ™‚å‚ç›´å‘ä¸Š
                 incenseRect.localRotation = Quaternion.Euler(0, 0, visualAngle);
             }
         }
 
-        // ¸üĞÂ½Ç¶Èï@Ê¾ÎÄ×Ö
+        // æ›´æ–°è§’åº¦é¡¯ç¤ºæ–‡å­—
         if (angleDisplayText != null)
         {
-            angleDisplayText.text = $"½Ç¶È£º{receivedAngle:F1}¶È";
+            angleDisplayText.text = $"è§’åº¦ï¼š{receivedAngle:F1}åº¦";
         }
     }
 
-    // ¹«é_·½·¨ÓÃì¶½ÓÊÕÁíÒ»Ì¨ëŠÄXµÄ½Ç¶È”µÖµ
+    // å…¬é–‹æ–¹æ³•ç”¨æ–¼æ¥æ”¶å¦ä¸€å°é›»è…¦çš„è§’åº¦æ•¸å€¼
     public void SetReceivedAngle(float angle)
     {
         receivedAngle = angle;
-        if (!gameActive) // Èç¹ûÒÑÔÚ½Y¹û®‹Ãæ£¬Á¢¼´¸üĞÂ
+        if (!gameActive) // å¦‚æœå·²åœ¨çµæœç•«é¢ï¼Œç«‹å³æ›´æ–°
         {
             SetupResultIncense();
         }
@@ -348,10 +348,10 @@ public class IncenseGameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        // Çå³ı¬FÓĞµÄÏã
+        // æ¸…é™¤ç¾æœ‰çš„é¦™
         ClearAllIncense();
 
-        // ÖØĞÂ³õÊ¼»¯ß[‘ò
+        // é‡æ–°åˆå§‹åŒ–éŠæˆ²
         InitializeGame();
     }
 }
