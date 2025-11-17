@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
@@ -10,7 +10,7 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     public bool isClicked = false;
 
     [Header("Visual Effects")]
-    public float hoverScale = 1.1f; // ‘ÒÍ£•rµÄ¿s·Å±ÈÀı
+    public float hoverScale = 1.1f; // æ‡¸åœæ™‚çš„ç¸®æ”¾æ¯”ä¾‹
 
     private IncenseGameManager gameManager;
     private Image incenseImage;
@@ -22,7 +22,7 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         angle = incenseAngle;
         gameManager = manager;
 
-        // ÔOÖÃ½M¼ş
+        // è¨­ç½®çµ„ä»¶
         rectTransform = GetComponent<RectTransform>();
         if (rectTransform == null)
         {
@@ -35,29 +35,29 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             incenseImage = gameObject.AddComponent<Image>();
         }
 
-        // „“½¨ÏãµÄÒ•ÓXĞ§¹û
+        // å‰µå»ºé¦™çš„è¦–è¦ºæ•ˆæœ
         CreateIncenseVisual(position);
     }
 
     void CreateIncenseVisual(Vector2 position)
     {
-        // ÔOÖÃÎ»ÖÃ
+        // è¨­ç½®ä½ç½®
         rectTransform.localPosition = position;
         rectTransform.localScale = Vector3.one;
 
-        // ÔOÖÃ´óĞ¡ - ¸ù“şÓÃ‘ôµÄ63x265 imageÕ{Õû
+        // è¨­ç½®å¤§å° - æ ¹æ“šç”¨æˆ¶çš„63x265 imageèª¿æ•´
         rectTransform.sizeDelta = new Vector2(63f, 265f);
 
-        // ÍêÈ«²»ÔOÖÃÈÎºÎImageŒÙĞÔ£¬±£³ÖPrefabÔ­Ê¼ÔOÖÃ
+        // å®Œå…¨ä¸è¨­ç½®ä»»ä½•Imageå±¬æ€§ï¼Œä¿æŒPrefabåŸå§‹è¨­ç½®
 
-        // ÔOÖÃĞıŞD½Ç¶È£¨Õ{ÕûéÕı´_µÄÒ•ÓX½Ç¶È£©
-        float visualAngle = angle - 90f; // 90¶È•r´¹Ö±ÏòÉÏ
+        // è¨­ç½®æ—‹è½‰è§’åº¦ï¼ˆèª¿æ•´ç‚ºæ­£ç¢ºçš„è¦–è¦ºè§’åº¦ï¼‰
+        float visualAngle = angle - 90f; // 90åº¦æ™‚å‚ç›´å‘ä¸Š
         rectTransform.localRotation = Quaternion.Euler(0, 0, visualAngle);
     }
 
     void CreateSmokeEffect()
     {
-        // „“½¨º††ÎµÄŸŸìFÒ•ÓXĞ§¹û
+        // å‰µå»ºç°¡å–®çš„ç…™éœ§è¦–è¦ºæ•ˆæœ
         GameObject smoke = new GameObject("Smoke");
         smoke.transform.SetParent(transform);
 
@@ -65,11 +65,11 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         smokeImage.color = new Color(0.8f, 0.8f, 0.8f, 0.3f);
 
         RectTransform smokeRect = smoke.GetComponent<RectTransform>();
-        smokeRect.localPosition = Vector3.up * 140f; // ¸ù“ş265¸ß¶ÈÕ{ÕûŸŸìFÎ»ÖÃ
-        smokeRect.sizeDelta = new Vector2(20f, 30f); // Ïà‘ªÕ{ÕûŸŸìF´óĞ¡
+        smokeRect.localPosition = Vector3.up * 140f; // æ ¹æ“š265é«˜åº¦èª¿æ•´ç…™éœ§ä½ç½®
+        smokeRect.sizeDelta = new Vector2(20f, 30f); // ç›¸æ‡‰èª¿æ•´ç…™éœ§å¤§å°
         smokeRect.localScale = Vector3.one;
 
-        // Ìí¼ÓŸŸìF„Ó®‹
+        // æ·»åŠ ç…™éœ§å‹•ç•«
         StartCoroutine(AnimateSmoke(smokeRect));
     }
 
@@ -79,10 +79,10 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
         while (true)
         {
-            // ŸŸìFïh„ÓĞ§¹û
+            // ç…™éœ§é£„å‹•æ•ˆæœ
             float time = Time.time;
             smokeRect.localScale = originalScale * (1f + Mathf.Sin(time * 2f) * 0.1f);
-            smokeRect.localPosition = Vector3.up * (140f + Mathf.Sin(time * 1.5f) * 8f); // ¸ù“şĞÂÎ»ÖÃÕ{Õû„Ó®‹
+            smokeRect.localPosition = Vector3.up * (140f + Mathf.Sin(time * 1.5f) * 8f); // æ ¹æ“šæ–°ä½ç½®èª¿æ•´å‹•ç•«
 
             yield return null;
         }
@@ -114,20 +114,20 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
         while (elapsedTime < duration)
         {
-            // Èç¹û î‘B¸Ä×ƒÁË£¨ÀıÈç»¬Êó¿ìËÙÒÆ„Ó£©£¬Í£Ö¹„Ó®‹
+            // å¦‚æœç‹€æ…‹æ”¹è®Šäº†ï¼ˆä¾‹å¦‚æ»‘é¼ å¿«é€Ÿç§»å‹•ï¼‰ï¼Œåœæ­¢å‹•ç•«
             if (isEntering && !isHovering) break;
             if (!isEntering && isHovering) break;
 
             elapsedTime += Time.deltaTime;
             float progress = elapsedTime / duration;
 
-            // Ö»ÓĞ¿s·Å„Ó®‹£¬ÍêÈ«²»ĞŞ¸ÄImageŒÙĞÔ
+            // åªæœ‰ç¸®æ”¾å‹•ç•«ï¼Œå®Œå…¨ä¸ä¿®æ”¹Imageå±¬æ€§
             rectTransform.localScale = Vector3.Lerp(startScale, targetScale, progress);
 
             yield return null;
         }
 
-        // ´_±£×î½K î‘BÕı´_
+        // ç¢ºä¿æœ€çµ‚ç‹€æ…‹æ­£ç¢º
         if (!isClicked)
         {
             rectTransform.localScale = isHovering ? Vector3.one * hoverScale : Vector3.one;
@@ -144,22 +144,22 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     void OnIncenseClicked()
     {
-        // Ò•ÓX·´ğ
+        // è¦–è¦ºåé¥‹
         StartCoroutine(ClickFeedback());
 
-        // Í¨Öªß[‘ò¹ÜÀíÆ÷
+        // é€šçŸ¥éŠæˆ²ç®¡ç†å™¨
         gameManager.OnIncenseClicked(angle);
     }
 
     System.Collections.IEnumerator ClickFeedback()
     {
-        // Í£Ö¹‘ÒÍ£Ğ§¹û
+        // åœæ­¢æ‡¸åœæ•ˆæœ
         isHovering = false;
 
-        // üc“ô•rµÄ¿s·ÅĞ§¹û
+        // é»æ“Šæ™‚çš„ç¸®æ”¾æ•ˆæœ
         Vector3 originalScale = Vector3.one;
 
-        // ¿sĞ¡
+        // ç¸®å°
         float shrinkTime = 0.1f;
         float elapsedTime = 0f;
 
@@ -171,7 +171,7 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             yield return null;
         }
 
-        // »ÖÍ
+        // æ¢å¾©
         elapsedTime = 0f;
         while (elapsedTime < shrinkTime)
         {
@@ -183,8 +183,8 @@ public class IncenseStick : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
         rectTransform.localScale = originalScale;
 
-        // üc“ôááÖ±½Ó„h³ıß@¸ùÏã
-        yield return new WaitForSeconds(0.2f); // µÈ´ıÒ»üc•rég×ŒÍæ¼Ò¿´µ½üc“ôĞ§¹û
+        // é»æ“Šå¾Œç›´æ¥åˆªé™¤é€™æ ¹é¦™
+        yield return new WaitForSeconds(0.2f); // ç­‰å¾…ä¸€é»æ™‚é–“è®“ç©å®¶çœ‹åˆ°é»æ“Šæ•ˆæœ
         Destroy(gameObject);
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -6,55 +6,55 @@ using TMPro;
 public class CustomerReportSystem : MonoBehaviour
 {
     [Header("Customer Report UI References")]
-    [Tooltip("Èı‚€”µÖµï@Ê¾µÄTextMeshPro½M¼ş")]
+    [Tooltip("ä¸‰å€‹æ•¸å€¼é¡¯ç¤ºçš„TextMeshProçµ„ä»¶")]
     public TextMeshProUGUI[] customerValueTexts = new TextMeshProUGUI[3];
 
-    [Tooltip("Èı‚€Ôö¼Ó°´âo(+)")]
+    [Tooltip("ä¸‰å€‹å¢åŠ æŒ‰éˆ•(+)")]
     public Button[] increaseButtons = new Button[3];
 
-    [Tooltip("Èı‚€œpÉÙ°´âo(-)")]
+    [Tooltip("ä¸‰å€‹æ¸›å°‘æŒ‰éˆ•(-)")]
     public Button[] decreaseButtons = new Button[3];
 
-    [Tooltip("´_ÕJƒ¦´æ°´âo")]
+    [Tooltip("ç¢ºèªå„²å­˜æŒ‰éˆ•")]
     public Button confirmButton;
 
     [Header("Customer Report Settings")]
-    [Tooltip("Èı‚€”µÖµµÄÃû·Q£¬¿ÉÒÔ×ÔÓ†")]
-    public string[] valueNames = { "êµÂÖµ", "˜IÁ¦Öµ", "Õ\Òâ¶È" };
+    [Tooltip("ä¸‰å€‹æ•¸å€¼çš„åç¨±ï¼Œå¯ä»¥è‡ªè¨‚")]
+    public string[] valueNames = { "é™°å¾·å€¼", "æ¥­åŠ›å€¼", "èª æ„åº¦" };
 
-    [Tooltip("³õÊ¼”µÖµ£¬îAÔO¶¼ÊÇ60")]
+    [Tooltip("åˆå§‹æ•¸å€¼ï¼Œé è¨­éƒ½æ˜¯60")]
     public int[] initialValues = { 60, 60, 60 };
 
-    [Tooltip("”µÖµµÄ×îĞ¡Öµ")]
+    [Tooltip("æ•¸å€¼çš„æœ€å°å€¼")]
     public int minValue = 0;
 
-    [Tooltip("”µÖµµÄ×î´óÖµ")]
+    [Tooltip("æ•¸å€¼çš„æœ€å¤§å€¼")]
     public int maxValue = 100;
 
-    [Tooltip("Ã¿´Îüc“ô°´âo¸Ä×ƒµÄ”µÖµ")]
+    [Tooltip("æ¯æ¬¡é»æ“ŠæŒ‰éˆ•æ”¹è®Šçš„æ•¸å€¼")]
     public int changeAmount = 1;
 
     [Header("Display Settings")]
-    [Tooltip("”µ×ÖµÄîÉ«")]
+    [Tooltip("æ•¸å­—çš„é¡è‰²")]
     public Color numberColor = Color.yellow;
 
-    [Tooltip("”µ×ÖµÄ×Öów´óĞ¡")]
+    [Tooltip("æ•¸å­—çš„å­—é«”å¤§å°")]
     public int fontSize = 36;
 
-    [Tooltip("ÊÇ·ñÊ¹ÓÃ´Öów")]
+    [Tooltip("æ˜¯å¦ä½¿ç”¨ç²—é«”")]
     public bool useBold = true;
 
     [Header("Audio Settings")]
-    [Tooltip("ÒôĞ§²¥·ÅÆ÷")]
+    [Tooltip("éŸ³æ•ˆæ’­æ”¾å™¨")]
     public AudioSource audioSource;
 
-    [Tooltip("°´âoüc“ôÒôĞ§")]
+    [Tooltip("æŒ‰éˆ•é»æ“ŠéŸ³æ•ˆ")]
     public AudioClip buttonClickSound;
 
-    [Tooltip("´_ÕJÒôĞ§")]
+    [Tooltip("ç¢ºèªéŸ³æ•ˆ")]
     public AudioClip confirmSound;
 
-    // Ë½ÓĞ×ƒ”µ
+    // ç§æœ‰è®Šæ•¸
     private int[] customerValues = new int[3];
 
     private void Start()
@@ -65,11 +65,11 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ³õÊ¼»¯¿Í‘ôˆó±í”µÖµ
+    /// åˆå§‹åŒ–å®¢æˆ¶å ±è¡¨æ•¸å€¼
     /// </summary>
     private void InitializeCustomerReport()
     {
-        // Ñ}Ñu³õÊ¼”µÖµµ½®”Ç°”µÖµê‡ÁĞ
+        // è¤‡è£½åˆå§‹æ•¸å€¼åˆ°ç•¶å‰æ•¸å€¼é™£åˆ—
         for (int i = 0; i < customerValues.Length; i++)
         {
             if (i < initialValues.Length)
@@ -78,20 +78,20 @@ public class CustomerReportSystem : MonoBehaviour
             }
             else
             {
-                customerValues[i] = 60; // îAÔOÖµ
+                customerValues[i] = 60; // é è¨­å€¼
             }
         }
     }
 
     /// <summary>
-    /// ÔOÖÃ°´âoÊÂ¼ş±OÂ Æ÷
+    /// è¨­ç½®æŒ‰éˆ•äº‹ä»¶ç›£è½å™¨
     /// </summary>
     private void SetupEventListeners()
     {
-        // ÔOÖÃÔö¼ÓºÍœpÉÙ°´âo
+        // è¨­ç½®å¢åŠ å’Œæ¸›å°‘æŒ‰éˆ•
         for (int i = 0; i < 3; i++)
         {
-            int index = i; // ±ÜÃâé]°ü†–î}
+            int index = i; // é¿å…é–‰åŒ…å•é¡Œ
 
             if (increaseButtons[i] != null)
             {
@@ -104,7 +104,7 @@ public class CustomerReportSystem : MonoBehaviour
             }
         }
 
-        // ÔOÖÃ´_ÕJ°´âo
+        // è¨­ç½®ç¢ºèªæŒ‰éˆ•
         if (confirmButton != null)
         {
             confirmButton.onClick.AddListener(ConfirmCustomerValues);
@@ -112,29 +112,29 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ĞŞ¸ÄÖ¸¶¨”µÖµ
+    /// ä¿®æ”¹æŒ‡å®šæ•¸å€¼
     /// </summary>
-    /// <param name="index">”µÖµË÷Òı (0-2)</param>
-    /// <param name="change">¸Ä×ƒÁ¿</param>
+    /// <param name="index">æ•¸å€¼ç´¢å¼• (0-2)</param>
+    /// <param name="change">æ”¹è®Šé‡</param>
     public void ModifyCustomerValue(int index, int change)
     {
         if (index < 0 || index >= customerValues.Length) return;
 
-        // Ó‹ËãĞÂ”µÖµKÏŞÖÆ¹ ‡ú
+        // è¨ˆç®—æ–°æ•¸å€¼ä¸¦é™åˆ¶ç¯„åœ
         customerValues[index] = Mathf.Clamp(customerValues[index] + change, minValue, maxValue);
 
-        // ¸üĞÂï@Ê¾
+        // æ›´æ–°é¡¯ç¤º
         UpdateCustomerValueDisplays();
 
-        // ²¥·ÅÒôĞ§
+        // æ’­æ”¾éŸ³æ•ˆ
         PlayButtonSound();
 
-        // ¿ÉÒÔÔÚß@ÑeÌí¼ÓÆäËûß‰İ‹£¬ÈçÕñ„ÓĞ§¹ûµÈ
-        Debug.Log($"{valueNames[index]} ×ƒ¸üé: {customerValues[index]}");
+        // å¯ä»¥åœ¨é€™è£¡æ·»åŠ å…¶ä»–é‚è¼¯ï¼Œå¦‚æŒ¯å‹•æ•ˆæœç­‰
+        Debug.Log($"{valueNames[index]} è®Šæ›´ç‚º: {customerValues[index]}");
     }
 
     /// <summary>
-    /// ¸üĞÂ”µÖµï@Ê¾
+    /// æ›´æ–°æ•¸å€¼é¡¯ç¤º
     /// </summary>
     private void UpdateCustomerValueDisplays()
     {
@@ -142,7 +142,7 @@ public class CustomerReportSystem : MonoBehaviour
         {
             if (customerValueTexts[i] != null)
             {
-                // Ê¹ÓÃRich Text¸ñÊ½»¯”µ×Öï@Ê¾
+                // ä½¿ç”¨Rich Textæ ¼å¼åŒ–æ•¸å­—é¡¯ç¤º
                 string colorHex = ColorUtility.ToHtmlStringRGBA(numberColor);
                 string boldTag = useBold ? "b" : "";
 
@@ -155,7 +155,7 @@ public class CustomerReportSystem : MonoBehaviour
                     customerValueTexts[i].text = $"<color=#{colorHex}><size={fontSize}>{customerValues[i]}</size></color>";
                 }
 
-                // Ö±½ÓÔOÖÃ½M¼şŒÙĞÔ£¨‚äÓÃ·½°¸£©
+                // ç›´æ¥è¨­ç½®çµ„ä»¶å±¬æ€§ï¼ˆå‚™ç”¨æ–¹æ¡ˆï¼‰
                 customerValueTexts[i].fontSize = fontSize;
                 customerValueTexts[i].color = numberColor;
                 customerValueTexts[i].fontStyle = useBold ? FontStyles.Bold : FontStyles.Normal;
@@ -165,15 +165,15 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ´_ÕJKƒ¦´æ”µÖµ
+    /// ç¢ºèªä¸¦å„²å­˜æ•¸å€¼
     /// </summary>
     public void ConfirmCustomerValues()
     {
-        // ²¥·Å´_ÕJÒôĞ§
+        // æ’­æ”¾ç¢ºèªéŸ³æ•ˆ
         PlayConfirmSound();
 
-        // Éú³É´_ÕJÓÏ¢
-        string confirmMessage = "¿Í‘ôˆó±íÒÑƒ¦´æ - ";
+        // ç”Ÿæˆç¢ºèªè¨Šæ¯
+        string confirmMessage = "å®¢æˆ¶å ±è¡¨å·²å„²å­˜ - ";
         for (int i = 0; i < customerValues.Length && i < valueNames.Length; i++)
         {
             confirmMessage += $"{valueNames[i]}:{customerValues[i]}";
@@ -182,15 +182,15 @@ public class CustomerReportSystem : MonoBehaviour
 
         Debug.Log(confirmMessage);
 
-        // ¿ÉÒÔÔÚß@ÑeÌí¼Óƒ¦´æµ½PlayerPrefs»òÆäËû³Ö¾Ã»¯ß‰İ‹
+        // å¯ä»¥åœ¨é€™è£¡æ·»åŠ å„²å­˜åˆ°PlayerPrefsæˆ–å…¶ä»–æŒä¹…åŒ–é‚è¼¯
         SaveToPlayerPrefs();
 
-        // Ó|°l´_ÕJÊÂ¼ş£¨¿ÉÒÔ×ŒÆäËûÏµ½y±OÂ £©
+        // è§¸ç™¼ç¢ºèªäº‹ä»¶ï¼ˆå¯ä»¥è®“å…¶ä»–ç³»çµ±ç›£è½ï¼‰
         OnCustomerReportConfirmed?.Invoke(customerValues);
     }
 
     /// <summary>
-    /// ƒ¦´æ”µÖµµ½PlayerPrefs
+    /// å„²å­˜æ•¸å€¼åˆ°PlayerPrefs
     /// </summary>
     private void SaveToPlayerPrefs()
     {
@@ -202,7 +202,7 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ÄPlayerPrefsİdÈë”µÖµ
+    /// å¾PlayerPrefsè¼‰å…¥æ•¸å€¼
     /// </summary>
     public void LoadFromPlayerPrefs()
     {
@@ -214,17 +214,17 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ÖØÖÃËùÓĞ”µÖµµ½³õÊ¼Öµ
+    /// é‡ç½®æ‰€æœ‰æ•¸å€¼åˆ°åˆå§‹å€¼
     /// </summary>
     public void ResetToDefault()
     {
         InitializeCustomerReport();
         UpdateCustomerValueDisplays();
-        Debug.Log("¿Í‘ôˆó±íÒÑÖØÖÃµ½îAÔOÖµ");
+        Debug.Log("å®¢æˆ¶å ±è¡¨å·²é‡ç½®åˆ°é è¨­å€¼");
     }
 
     /// <summary>
-    /// ²¥·Å°´âoÒôĞ§
+    /// æ’­æ”¾æŒ‰éˆ•éŸ³æ•ˆ
     /// </summary>
     private void PlayButtonSound()
     {
@@ -235,7 +235,7 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ²¥·Å´_ÕJÒôĞ§
+    /// æ’­æ”¾ç¢ºèªéŸ³æ•ˆ
     /// </summary>
     private void PlayConfirmSound()
     {
@@ -245,13 +245,13 @@ public class CustomerReportSystem : MonoBehaviour
         }
     }
 
-    // ¹«é_·½·¨¹©ÆäËûÄ_±¾Õ{ÓÃ
+    // å…¬é–‹æ–¹æ³•ä¾›å…¶ä»–è…³æœ¬èª¿ç”¨
 
     /// <summary>
-    /// «@È¡Ö¸¶¨”µÖµ
+    /// ç²å–æŒ‡å®šæ•¸å€¼
     /// </summary>
-    /// <param name="index">”µÖµË÷Òı</param>
-    /// <returns>”µÖµ</returns>
+    /// <param name="index">æ•¸å€¼ç´¢å¼•</param>
+    /// <returns>æ•¸å€¼</returns>
     public int GetCustomerValue(int index)
     {
         if (index >= 0 && index < customerValues.Length)
@@ -260,10 +260,10 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ÔOÖÃÖ¸¶¨”µÖµ
+    /// è¨­ç½®æŒ‡å®šæ•¸å€¼
     /// </summary>
-    /// <param name="index">”µÖµË÷Òı</param>
-    /// <param name="value">ĞÂ”µÖµ</param>
+    /// <param name="index">æ•¸å€¼ç´¢å¼•</param>
+    /// <param name="value">æ–°æ•¸å€¼</param>
     public void SetCustomerValue(int index, int value)
     {
         if (index >= 0 && index < customerValues.Length)
@@ -274,9 +274,9 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// «@È¡ËùÓĞ”µÖµµÄ¸±±¾
+    /// ç²å–æ‰€æœ‰æ•¸å€¼çš„å‰¯æœ¬
     /// </summary>
-    /// <returns>”µÖµê‡ÁĞ</returns>
+    /// <returns>æ•¸å€¼é™£åˆ—</returns>
     public int[] GetAllCustomerValues()
     {
         int[] valuesCopy = new int[customerValues.Length];
@@ -285,9 +285,9 @@ public class CustomerReportSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ÔOÖÃËùÓĞ”µÖµ
+    /// è¨­ç½®æ‰€æœ‰æ•¸å€¼
     /// </summary>
-    /// <param name="newValues">ĞÂµÄ”µÖµê‡ÁĞ</param>
+    /// <param name="newValues">æ–°çš„æ•¸å€¼é™£åˆ—</param>
     public void SetAllCustomerValues(int[] newValues)
     {
         for (int i = 0; i < customerValues.Length && i < newValues.Length; i++)
@@ -297,19 +297,19 @@ public class CustomerReportSystem : MonoBehaviour
         UpdateCustomerValueDisplays();
     }
 
-    // ÊÂ¼şÏµ½y
+    // äº‹ä»¶ç³»çµ±
     public System.Action<int[]> OnCustomerReportConfirmed;
     public System.Action<int, int> OnValueChanged; // index, newValue
 
     /// <summary>
-    /// Ó|°l”µÖµ¸Ä×ƒÊÂ¼ş
+    /// è§¸ç™¼æ•¸å€¼æ”¹è®Šäº‹ä»¶
     /// </summary>
     private void TriggerValueChangedEvent(int index, int newValue)
     {
         OnValueChanged?.Invoke(index, newValue);
     }
 
-    // ¾İ‹Æ÷ÓÃµÄœyÔ‡·½·¨
+    // ç·¨è¼¯å™¨ç”¨çš„æ¸¬è©¦æ–¹æ³•
 #if UNITY_EDITOR
     [ContextMenu("Test - Add 10 to All Values")]
     private void TestAddToAllValues()
